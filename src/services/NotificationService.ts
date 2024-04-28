@@ -1,4 +1,5 @@
 import { IMessageClient } from "../abstraction/clients/IMessageClient";
+import { INotificationService } from "../abstraction/services/INotificationService";
 
 export class NotificationService implements INotificationService {
   constructor(private messageClients: IMessageClient[]) {}

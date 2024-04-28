@@ -8,22 +8,28 @@ export class CourseRepository implements ICourseRepository {
   constructor(private dbClient: IDBClient) {}
 
   async addCourse(course: Course): Promise<void> {
-    // Implement adding course to database
+    // TODO: Implement adding course to database
   }
 
   async addStudentToCourse(student: Student, courseName: string): Promise<void> {
-    // Implement adding student to course in database
+    // TODO: Implement adding student to course in database
   }
 
   async getCourseByName(courseName: string): Promise<Course | undefined> {
-    // Implement getting course by name from database
+    // TODO: Implement getting course by name from database
+    // Dummy implementation: we always return undefined
+    return undefined;
   }
 
   async getCourses(): Promise<Course[]> {
-    // Implement getting all courses from database
+    // TODO: Implement getting all courses from database
+    // Dummy implementation: we always return empty array
+    return [];
   }
 
   async getCourseStatistics(courseName: string): Promise<CourseStatistic> {
-    // Implement getting course statistics from database
+    // TODO: Implement getting course statistics from database
+    // Dummy implementation: we always return empty CourseStatistic object
+    return new CourseStatistic('', 0, 0, 0, new Date());
   }
 }
