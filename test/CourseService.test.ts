@@ -33,7 +33,7 @@ describe('CourseService tests', () => {
 
   it('should add a course', async () => {
     // Arrange
-    const course = new Course('Mathematics', new Date(), 12, 5000);
+    const course = new Course('CleanCode', new Date(), 6, 60000);
 
     // Act
     await courseService.addCourse(course);
@@ -45,9 +45,9 @@ describe('CourseService tests', () => {
   it('should get all students from courses', async () => {
     // Arrange
     const student1 = new Student('John', 25);
-    const student2 = new Student('Alice', 30);
-    const course1 = new Course('Mathematics', new Date(), 12, 5000);
-    const course2 = new Course('Physics', new Date(), 10, 4500);
+    const student2 = new Student('Bob', 30);
+    const course1 = new Course('CleanCode', new Date(), 6, 60000);
+    const course2 = new Course('Angular', new Date(), 10, 14500);
     course1.addStudent(student1);
     course2.addStudent(student2);
     courseRepositoryMock.getCourses = jest.fn().mockResolvedValue([course1, course2]);
@@ -63,8 +63,8 @@ describe('CourseService tests', () => {
   it('should add a student to a course if payment is made', async () => {
     // Arrange
     const student = new Student('John', 25);
-    const courseName = 'Mathematics';
-    const course = new Course(courseName, new Date(), 12, 5000);
+    const courseName = 'CleanCode';
+    const course = new Course(courseName, new Date(), 6, 60000);
     courseRepositoryMock.getCourseByName = jest.fn().mockResolvedValue(course);
     paymentServiceMock.getIsOrderPaid = jest.fn().mockResolvedValue(true);
     const addStudentSpy = jest.spyOn(course, 'addStudent');
@@ -92,8 +92,8 @@ describe('CourseService tests', () => {
   it('should throw an error when adding a student to a course without payment', async () => {
     // Arrange
     const student = new Student('John', 25);
-    const courseName = 'Mathematics';
-    const course = new Course(courseName, new Date(), 12, 5000);
+    const courseName = 'CleanCode';
+    const course = new Course(courseName, new Date(), 6, 60000);
     courseRepositoryMock.getCourseByName = jest.fn().mockResolvedValue(course);
     paymentServiceMock.getIsOrderPaid = jest.fn().mockResolvedValue(false);
 
@@ -103,8 +103,8 @@ describe('CourseService tests', () => {
 
   it('should get course statistics', async () => {
     // Arrange
-    const courseName = 'Mathematics';
-    const courseStatistic = new CourseStatistic(courseName, 20, 15, 75, new Date());
+    const courseName = 'CleanCode';
+    const courseStatistic = new CourseStatistic(courseName, 6, 5, 83, new Date());
     courseRepositoryMock.getCourseStatistics = jest.fn().mockResolvedValue(courseStatistic);
 
     // Act

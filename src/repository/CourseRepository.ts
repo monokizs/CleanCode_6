@@ -8,11 +8,28 @@ export class CourseRepository implements ICourseRepository {
   constructor(private dbClient: IDBClient) {}
 
   async addCourse(course: Course): Promise<void> {
-    // TODO: Implement adding course to database
+    try {
+      const emptyCourse = new Course('', new Date(), 0, 0);
+      if (course==emptyCourse) {
+        throw new Error("Course empty error");
+      }
+      const sql = `INSERT INTO courses`;
+      await this.dbClient.query(sql);
+    } catch (error) {
+      throw new Error(`Failed to add course to the database: ${(error as Error).message}`);
+    }
   }
 
   async addStudentToCourse(student: Student, courseName: string): Promise<void> {
-    // TODO: Implement adding student to course in database
+    try {
+      if (!courseName) {
+        throw new Error("Empty coursename error");
+      }
+      const sql = `INSERT INTO course_students`;
+      await this.dbClient.query(sql);
+    } catch (error) {
+      throw new Error(`Failed to add student to course in the database: ${(error as Error).message}`);
+    }
   }
 
   async getCourseByName(courseName: string): Promise<Course | undefined> {

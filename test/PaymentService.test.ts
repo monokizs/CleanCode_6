@@ -16,8 +16,8 @@ describe('PaymentService tests', () => {
   
     it('should return true if order is paid', async () => {
       // Arrange
-      const student = new Student('John', 25);
-      const courseName = 'Math';
+      const student = new Student('John', 20);
+      const courseName = 'Angular';
       financialApiClientMock.checkPaymentStatus=jest.fn().mockResolvedValue(true);
   
       // Act
@@ -30,8 +30,8 @@ describe('PaymentService tests', () => {
   
     it('should return false if order is not paid', async () => {
       // Arrange
-      const student = new Student('Alice', 28);
-      const courseName = 'Science';
+      const student = new Student('Bob', 30);
+      const courseName = 'CleanCode';
       financialApiClientMock.checkPaymentStatus=jest.fn().mockResolvedValue(false);
   
       // Act
