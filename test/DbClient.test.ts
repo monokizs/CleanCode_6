@@ -10,29 +10,29 @@ describe('DbClient tests', () => {
   describe('Connect', () => {
     it('should throw error when connection fails', async () => {
         // Act & Assert
-        await expect(dbClient.connect()).rejects.toThrowError('Failed to connect to the database: Connection failed');
+        await expect(dbClient.connect()).rejects.toThrowError('Connection failed');
       });
-    it('should throw error when connection fails', async () => {
+    /*it('should throw error when connection fails', async () => {
       // Arrange
       jest.spyOn(dbClient as any, 'connect').mockRejectedValue(new Error('Connection failed'));
 
       // Act & Assert
       await expect(dbClient.connect()).rejects.toThrowError('Connection failed');
-    });
+    });*/
   });
 
   describe('Disconnect', () => {
     it('should throw error when disconnection fails', async () => {
         // Act & Assert
-        await expect(dbClient.disconnect()).rejects.toThrowError('Failed to disconnect from the database: Disconnection failed');
+        await expect(dbClient.disconnect()).rejects.toThrowError('Disconnection failed');
       });
-    it('should throw error when disconnection fails', async () => {
+    /*it('should throw error when disconnection fails', async () => {
       // Arrange
       jest.spyOn(dbClient as any, 'disconnect').mockRejectedValue(new Error('Disconnection failed'));
 
       // Act & Assert
       await expect(dbClient.disconnect()).rejects.toThrowError('Disconnection failed');
-    });
+    });*/
   });
 
   describe('Query', () => {

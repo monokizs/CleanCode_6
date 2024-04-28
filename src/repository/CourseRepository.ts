@@ -8,16 +8,12 @@ export class CourseRepository implements ICourseRepository {
   constructor(private dbClient: IDBClient) {}
 
   async addCourse(course: Course): Promise<void> {
-    try {
-      const emptyCourse = new Course('', new Date(), 0, 0);
-      if (course==emptyCourse) {
-        throw new Error("Course empty error");
-      }
-      const sql = `INSERT INTO courses`;
-      await this.dbClient.query(sql);
-    } catch (error) {
-      throw new Error(`Failed to add course to the database: ${(error as Error).message}`);
+    if (course.getCourseName() == '') {
+      throw new Error("Course empty error");
     }
+  
+    const sql = `INSERT INTO courses`;
+    await this.dbClient.query(sql);
   }
 
   async addStudentToCourse(student: Student, courseName: string): Promise<void> {
@@ -33,19 +29,16 @@ export class CourseRepository implements ICourseRepository {
   }
 
   async getCourseByName(courseName: string): Promise<Course | undefined> {
-    // TODO: Implement getting course by name from database
     // Dummy implementation: we always return undefined
     return undefined;
   }
 
   async getCourses(): Promise<Course[]> {
-    // TODO: Implement getting all courses from database
     // Dummy implementation: we always return empty array
     return [];
   }
 
   async getCourseStatistics(courseName: string): Promise<CourseStatistic> {
-    // TODO: Implement getting course statistics from database
     // Dummy implementation: we always return empty CourseStatistic object
     return new CourseStatistic('', 0, 0, 0, new Date());
   }

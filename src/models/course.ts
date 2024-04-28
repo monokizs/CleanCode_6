@@ -12,4 +12,8 @@ export class Course {
   getStudents(): Student[] {
     return this.students;
   }
+
+  getCourseName(): string {
+    return this.courseName;
+  }
 }

@@ -14,6 +14,11 @@ describe('Course tests', () => {
     course = new Course(courseName, startDate, lengthInWeeks, costInHuf);
   });
 
+  it('should return the correct course name', () => {
+    // Assert
+    expect(course.getCourseName()).toBe('CleanCode');
+  });
+
   it('should add a student to the course', () => {
     // Arrange
     const student = new Student('John', 25);
