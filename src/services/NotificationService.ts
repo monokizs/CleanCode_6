@@ -5,6 +5,9 @@ export class NotificationService implements INotificationService {
   constructor(private messageClients: IMessageClient[]) {}
 
   public async sendNotification(message: string): Promise<void> {
+    if (!message.trim()) {
+      throw new Error('Empty message');
+    }
     for (const client of this.messageClients) {
       await client.sendNotification(message);
     }

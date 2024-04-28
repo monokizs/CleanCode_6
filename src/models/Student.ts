@@ -9,10 +9,24 @@ export class Student extends Person {
   }
 
   addRegisteredCourse(courseName: string): void {
+    if (courseName.trim() === "") {
+      throw new Error("Course name cannot be empty");
+    }
     this.registeredCourses.push(courseName);
   }
 
+  getRegisteredCourses(): string[] {
+    return this.registeredCourses;
+  }
+
   addAssignedCourse(courseName: string): void {
+    if (courseName.trim() === "") {
+      throw new Error("Course name cannot be empty");
+    }
     this.assignedCourses.push(courseName);
+  }
+
+  getAssignedCourses(): string[] {
+    return this.assignedCourses;
   }
 }
